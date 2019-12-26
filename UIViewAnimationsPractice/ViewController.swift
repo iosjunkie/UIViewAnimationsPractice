@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     }
     
     func up() {
-        UIView.animate(withDuration: 2, delay: 2, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 1.2, delay: 2, usingSpringWithDamping: 0.5, initialSpringVelocity: 4, options: .curveEaseIn, animations: {
             self.block.frame.origin = CGPoint(x: self.view.center.x - (self.block.frame.width / 2), y: 0)
         }) { (success) in
             self.right()
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     }
     
     func right() {
-        UIView.animate(withDuration: 2, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 1.2, delay: 2, usingSpringWithDamping: 0.2, initialSpringVelocity: 6, options: .curveEaseOut, animations: {
             self.block.frame.origin = CGPoint(x: self.view.frame.width - self.block.frame.width, y: self.view.center.y - (self.block.frame.size.height / 2))
         }) { (success) in
             self.down()
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     }
     
     func down() {
-        UIView.animate(withDuration: 2, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1.2, delay: 2, usingSpringWithDamping: 0.9, initialSpringVelocity: 3, options: .curveEaseInOut, animations: {
             self.block.frame.origin = CGPoint(x: self.view.center.x - (self.block.frame.width / 2), y: self.view.frame.height - self.block.frame.height)
         }) { (success) in
             self.left()
