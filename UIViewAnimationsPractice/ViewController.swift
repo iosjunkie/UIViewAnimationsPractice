@@ -19,9 +19,7 @@ class ViewController: UIViewController {
         block.addGestureRecognizer(tap)
         block.isUserInteractionEnabled = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-            self.up()
-        }
+        up()
     }
     
     @objc func blockTapped() {
@@ -36,7 +34,7 @@ class ViewController: UIViewController {
     }
     
     func up() {
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 2, delay: 2, options: .curveEaseIn, animations: {
             self.block.frame.origin = CGPoint(x: self.view.center.x - (self.block.frame.width / 2), y: 0)
         }) { (success) in
             self.right()
@@ -44,7 +42,7 @@ class ViewController: UIViewController {
     }
     
     func right() {
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 2, delay: 0, options: .curveEaseOut, animations: {
             self.block.frame.origin = CGPoint(x: self.view.frame.width - self.block.frame.width, y: self.view.center.y - (self.block.frame.size.height / 2))
         }) { (success) in
             self.down()
@@ -52,7 +50,7 @@ class ViewController: UIViewController {
     }
     
     func left() {
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 2, delay: 0, options: .curveLinear, animations: {
             self.block.frame.origin = CGPoint(x: 0, y: self.view.center.y - (self.block.frame.size.height / 2))
         }) { (success) in
             self.reset()
@@ -60,7 +58,7 @@ class ViewController: UIViewController {
     }
     
     func down() {
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 2, delay: 0, options: .curveEaseInOut, animations: {
             self.block.frame.origin = CGPoint(x: self.view.center.x - (self.block.frame.width / 2), y: self.view.frame.height - self.block.frame.height)
         }) { (success) in
             self.left()
